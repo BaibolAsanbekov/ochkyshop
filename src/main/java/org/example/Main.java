@@ -1,16 +1,72 @@
 package org.example;
 
 import java.sql.*;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        String url = "jdbc:sqlite:database.db"; // Replace this with the path to your SQLite database file
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Добро пожаловать в салон оптики!");
+            System.out.println("Выберите роль:");
+            System.out.println("1. Войти как Администратор");
+            System.out.println("2. Зарегистрироваться как Клиент");
+            System.out.println("3. Войти как Клиент");
+            System.out.println("4. Выйти");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // очистка буфера
 
-        try {
-            Connection conn = DriverManager.getConnection(url);
-            System.out.println("Connection to SQLite has been established.");
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            switch (choice) {
+                case 1:
+                    //adminMenu();
+                    break;
+                case 2://Рега клиента
+                    //adminMenu();
+                    break;
+                case 3:
+                    //clientMenu(); Вход как клиент
+                    break;
+                case 4:
+                    System.out.println("До свидания!");
+                    return;
+                default:
+                    System.out.println("Пожалуйста, выберите правильный вариант.");
+            }
         }
     }
-}
+
+    public static void adminMenu() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Меню администратора:");
+        System.out.println("1. Просмотр заказов");
+        System.out.println("2. Создать заказ");
+        System.out.println("3. Удалить заказ");
+        System.out.println("4. Изменить статус заказа");
+        System.out.println("5. Просмотр всех товаров");
+        System.out.println("6. Добавить новый товар");
+        System.out.println("7. Удалить товар");
+        System.out.println("8. Вернуться в главное меню");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // очистка буфера
+
+        // Здесь можно добавить вызов соответствующих методов для обработки выбора администратора
+    }
+    public static void clientMenu() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Меню клиента:");
+        System.out.println("1. Зарегистрироваться");
+        System.out.println("2. Войти");
+        System.out.println("3. Сделать заказ");
+        System.out.println("4. Просмотреть свои заказы");
+        System.out.println("5. Посмотреть каталог товаров");
+        System.out.println("6. Вернуться в главное меню");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // очистка буфера
+
+        // Здесь можно добавить вызов соответствующих методов для обработки выбора клиента
+    }
+
+
+    }
