@@ -13,6 +13,7 @@ public class adminMenu {
         product_form product = new product_form();
         DataManager dataManager = new DataManager();
 
+
         while (true) {
             System.out.println("Меню администратора:");
             System.out.println("1. Просмотр заказов");
@@ -31,6 +32,7 @@ public class adminMenu {
             switch (choice) {
                 case 1:
                     // Просмотр заказов
+                    dataManager.viewAllOrders();
                     break;
                 case 2:
                     // Создать заказ
@@ -42,6 +44,7 @@ public class adminMenu {
                     break;
                 case 4:
                     // Изменить статус заказа
+                    order.updateOrderStatusForm();
                     break;
                 case 5:
                     // Просмотр всех товаров

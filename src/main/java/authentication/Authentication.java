@@ -123,6 +123,7 @@ public class Authentication {
             System.out.println("Аутентификация прошла успешно.");
         } else {
             System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
+            
         }
     }
 

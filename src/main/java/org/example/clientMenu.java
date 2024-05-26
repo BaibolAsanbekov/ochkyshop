@@ -1,34 +1,44 @@
 package org.example;
 
+import DataManager.DataManager;
+import ordermanager.order_form;
+
 import java.util.Scanner;
 
 public class clientMenu {
     public static void clientMenu() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Меню клиента:");
-        System.out.println("1. Сделать заказ");
-        System.out.println("2. Просмотреть свои заказы");
-        System.out.println("3. Посмотреть каталог товаров");
-        System.out.println("4. Вернуться в главное меню");
+        order_form order = new order_form();
 
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // очистка буфера
+        while (true) {
+            System.out.println("Меню клиента:");
+            System.out.println("1. Сделать заказ");
+            System.out.println("2. Просмотреть свои заказы");
+            System.out.println("3. Посмотреть каталог товаров");
+            System.out.println("4. Вернуться в главное меню");
 
-        switch (choice) {
-            case 1:
-                // создать заказ
-                break;
-            case 2:
-                // просмотр заказов
-                break;
-            case 3:
-                // просмотр каталогов
-                break;
-            case 4:
-                System.out.println("Возврат на главное меню");
-                return;
-            default:
-                System.out.println("Пожалуйста, выберите правильный вариант.");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // очистка буфера
+
+            switch (choice) {
+                case 1:
+                    // создать заказ
+                    order.addOrderClient();
+                    break;
+                case 2:
+                    // просмотр заказов
+                    DataManager.getClientOrders();
+                    break;
+                case 3:
+                    // просмотр товаров
+                    DataManager.viewAllProducts();
+                    break;
+                case 4:
+                    System.out.println("Возврат на главное меню");
+                    return;
+                default:
+                    System.out.println("Пожалуйста, выберите правильный вариант.");
+            }
         }
     }
 }
