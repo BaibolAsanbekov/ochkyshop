@@ -1,14 +1,13 @@
-package Authentication;
+package authentication;
 
 import java.sql.*;
 import java.util.Scanner;
 
-public class LoginRegistration {
+public class Authentication {
     private final Scanner scanner;
 
-
-    public LoginRegistration(Scanner scanner) {
-        this.scanner = scanner;
+    public Authentication(Scanner scanner) {
+        this.scanner = new Scanner(System.in);
     }
 
     public void registerUser() {
@@ -37,7 +36,7 @@ public class LoginRegistration {
     private boolean registerToDatabase(String username, String password) {
         try {
             // Установка соединения с базой данных
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
 
             // Проверка существования пользователя с таким же именем
             PreparedStatement checkStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
@@ -64,7 +63,6 @@ public class LoginRegistration {
         }
     }
 
-
     public void authenticateUser() {
         System.out.println("====== Аутентификация ======");
         System.out.print("Введите имя пользователя: ");
@@ -84,7 +82,7 @@ public class LoginRegistration {
     private boolean authInDatabase(String username, String password) {
         try {
             // Установка соединения с базой данных
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
 
             // Поиск пользователя с заданным именем и паролем
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
@@ -120,6 +118,5 @@ public class LoginRegistration {
             System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
         }
     }
-
 
 }
