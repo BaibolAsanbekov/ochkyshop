@@ -50,4 +50,7 @@ public class order_form {
         // Удаление заказа с указанным ID
         DataManager.deleteOrder(orderId);
     }
+
+    public void getAllProductsForm() {
+    }
 }

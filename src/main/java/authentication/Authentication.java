@@ -64,19 +64,26 @@ public class Authentication {
     }
 
     public void authenticateUser() {
-        System.out.println("====== Аутентификация ======");
-        System.out.print("Введите имя пользователя: ");
-        String username = scanner.nextLine();
-        System.out.print("Введите пароль: ");
-        String password = scanner.nextLine();
+        while (true) {
+            System.out.println("====== Аутентификация ======");
+            System.out.print("Введите имя пользователя: ");
+            String username = scanner.nextLine();
+            System.out.print("Введите пароль: ");
+            String password = scanner.nextLine();
 
-        // Проверка аутентификации пользователя в базе данных
-        boolean authenticationSuccess = authInDatabase(username, password);
-        if (authenticationSuccess) {
-            System.out.println("Аутентификация прошла успешно.");
-        } else {
-            System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
+            boolean authenticationSuccess = authInDatabase(username, password);
+            if (authenticationSuccess) {
+                System.out.println("Аутентификация прошла успешно.");
+                // Вызов метода для отображения меню клиента
+                displayClientMenu();
+                break;
+            } else {
+                System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
+            }
         }
+    }
+
+    private void displayClientMenu() {
     }
 
     private boolean authInDatabase(String username, String password) {
