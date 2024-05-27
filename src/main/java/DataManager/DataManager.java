@@ -33,14 +33,14 @@ public class DataManager {
             // Выполняем запрос
             ps.executeUpdate();
 
-            System.out.println("Заказ успешно создан.");
+            System.out.println("The order has been successfully created.");
         } catch (SQLException e) {
-            System.out.println("Ошибка при создании заказа: " + e.getMessage());
+            System.out.println("Error when creating an order: " + e.getMessage());
         }
     }
 
     public static void deleteOrder(int orderId) {
-        String sql = "DELETE FROM orders WHERE order_id = ?";
+        String sql = "DELETE FROM orders WHERE id = ?";
 
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -51,12 +51,12 @@ public class DataManager {
             // Выполнение запроса на удаление заказа
             int rowsDeleted = pstmt.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("Заказ успешно удален.");
+                System.out.println("Order successfully deleted.");
             } else {
-                System.out.println("Ошибка: Не удалось найти заказ с таким ID.");
+                System.out.println("Error: Unable to find an order with this ID.");
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при удалении заказа: " + e.getMessage());
+            System.out.println("Error when deleting an order: " + e.getMessage());
         }
     }
 
@@ -72,7 +72,7 @@ public class DataManager {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.out.println("Ошибка при добавлении товара: " + e.getMessage());
+            System.out.println("Error when adding a product: " + e.getMessage());
             return false;
         }
     }
@@ -89,7 +89,7 @@ public class DataManager {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.out.println("Ошибка при добавлении товара: " + e.getMessage());
+            System.out.println("Error when adding a product: " + e.getMessage());
             return false;
         }
     }
@@ -142,30 +142,30 @@ public class DataManager {
         List<String> lenses = getAllLenses();
 
         if (frames.isEmpty() && lenses.isEmpty()) {
-            System.out.println("Нет доступных товаров.");
+            System.out.println("No products available.");
             return;
         }
         System.out.println("---------------------------");
-        System.out.println("Список всех товаров:");
+        System.out.println("List of all products:");
         System.out.println("---------------------------");
         if (!frames.isEmpty()) {
-            System.out.println("Оправы:");
+            System.out.println("Frames:");
             for (String frame : frames) {
                 System.out.println(frame);
             }
             System.out.println("---------------------------");
         } else {
-            System.out.println("Нет доступных оправ.");
+            System.out.println("There are no available frames.");
         }
 
         if (!lenses.isEmpty()) {
-            System.out.println("Линзы:");
+            System.out.println("Lenses:");
             for (String lens : lenses) {
                 System.out.println(lens);
             }
             System.out.println("---------------------------");
         } else {
-            System.out.println("Нет доступных линз.");
+            System.out.println("No lenses available.");
         }
     }
 
@@ -180,12 +180,12 @@ public class DataManager {
 
             int rowsDeleted = pstmt.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("Оправа успешно удалена.");
+                System.out.println("The frame has been successfully removed.");
             } else {
-                System.out.println("Ошибка: Не удалось найти оправу с таким ID.");
+                System.out.println("Error: Could not find a frame with this ID.");
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при удалении оправы: " + e.getMessage());
+            System.out.println("Error when removing the frame: " + e.getMessage());
         }
     }
 
@@ -199,12 +199,12 @@ public class DataManager {
 
             int rowsDeleted = pstmt.executeUpdate();
             if (rowsDeleted > 0) {
-                System.out.println("Линза успешно удалена.");
+                System.out.println("The lens has been successfully removed.");
             } else {
-                System.out.println("Ошибка: Не удалось найти линзу с таким ID.");
+                System.out.println("Error: Unable to find a lens with this ID.");
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при удалении линзы: " + e.getMessage());
+            System.out.println("Error when removing the lens: " + e.getMessage());
         }
     }
     public void viewAllOrders() {
@@ -214,7 +214,7 @@ public class DataManager {
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
-            System.out.println("Список заказов:");
+            System.out.println("Order list:");
             while (rs.next()) {
                 int orderId = rs.getInt("id");
                 int nameId = rs.getInt("name_id");
@@ -225,12 +225,12 @@ public class DataManager {
                 String status = rs.getString("status");
                 String createdAt = rs.getString("created_at");
 
-                System.out.printf("ID Заказа: %d, ID Имени: %d, Имя: %s, Параметры зрения: %s, ID Линзы: %d, ID Оправы: %d, Статус: %s, Дата создания: %s%n",
+                System.out.printf("Order ID: %d, Name ID: %d, Name: %s, Vision parameters: %s, ID Lenses: %d, ID Frames: %d, Status: %s, Date of Creation: %s%n",
                         orderId, nameId, name, visionParam, lensesId, frameId, status, createdAt);
             }
 
         } catch (SQLException e) {
-            System.out.println("Ошибка при просмотре заказов: " + e.getMessage());
+            System.out.println("Error when viewing orders: " + e.getMessage());
 
         }
     }
@@ -248,7 +248,7 @@ public class DataManager {
             pstmt.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.out.println("Ошибка при добавлении заказа: " + e.getMessage());
+            System.out.println("Error when adding an order: " + e.getMessage());
             return false;
         }
     }
@@ -263,12 +263,12 @@ public class DataManager {
 
             int rowsUpdated = pstmt.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("Статус заказа успешно обновлен.");
+                System.out.println("Order status has been successfully updated.");
             } else {
-                System.out.println("Ошибка: Не удалось найти заказ с указанным ID.");
+                System.out.println("Error: Unable to find an order with the specified ID.");
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при обновлении статуса заказа: " + e.getMessage());
+            System.out.println("Error when updating order status: " + e.getMessage());
         }
     }
     public static void addOrderClient(int nameId, String name, String visionParam, int lensesId, int frameId,String createdAt) {
@@ -287,9 +287,9 @@ public class DataManager {
             // Выполняем запрос
             ps.executeUpdate();
 
-            System.out.println("Заказ успешно создан.");
+            System.out.println("The order has been successfully created.");
         } catch (SQLException e) {
-            System.out.println("Ошибка при создании заказа: " + e.getMessage());
+            System.out.println("Error when creating an order: " + e.getMessage());
         }
     }
     public static List<String> getClientOrders(int clientId) {
@@ -310,11 +310,11 @@ public class DataManager {
                 String status = rs.getString("status");
                 String createdAt = rs.getString("created_at");
 
-                orders.add("ID заказа: " + orderId + ", Название товара: " + productName + ", Параметр зрения: " + visionParam
-                        + ", Статус: " + status + ", Создан: " + createdAt);
+                orders.add("order ID: " + orderId + ", Product name: " + productName + ", Vision parameter: " + visionParam
+                        + ", Status: " + status + ", Created: " + createdAt);
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка при получении списка заказов: " + e.getMessage());
+            System.out.println("Error when receiving the list of orders: " + e.getMessage());
         }
 
         return orders;

@@ -13,41 +13,41 @@ public class order_form {
 
 
     public void createOrderForm() {
-        System.out.println("====== Форма создания заказа ======");
-        System.out.print("Введите ID клиента: ");
+        System.out.println("====== Order creation form ======");
+        System.out.print("Enter the customer ID: ");
         int nameId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите имя клиента: ");
+        System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
 
-        System.out.print("Введите параметры зрения: ");
+        System.out.print("Enter the vision parameters: ");
         String visionParam = scanner.nextLine();
 
-        System.out.print("Введите ID линз: ");
+        System.out.print("Enter the lens ID: ");
         int lensesId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите ID оправы: ");
+        System.out.print("Enter the frame ID: ");
         int frameId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите статус заказа: ");
+        System.out.print("Enter the status of the order: ");
         String status = scanner.nextLine();
 
-        System.out.print("Введите дату создания заказа (в формате yyyy-MM-dd): ");
+        System.out.print("Enter the date the order was created  (in the format of yyyy-MM-dd): ");
         String createdAt = scanner.nextLine();
 
-        // Создание заказа с полученными данными
+
         DataManager.createOrder(nameId, name, visionParam, lensesId, frameId, status, createdAt);
     }
     public void deleteOrderForm() {
-        System.out.println("====== Форма удаления заказа ======");
-        System.out.print("Введите ID заказа для удаления: ");
+        System.out.println("====== Order deletion form ======");
+        System.out.print("Enter the order ID to delete: ");
         int orderId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        // Удаление заказа с указанным ID
+
         DataManager.deleteOrder(orderId);
     }
 
@@ -55,39 +55,38 @@ public class order_form {
     }
     public static void updateOrderStatusForm() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Форма изменения статуса заказа");
-        System.out.print("Введите ID заказа: ");
+        System.out.println("Form for changing the order status");
+        System.out.print("Enter order ID: ");
         int orderId = scanner.nextInt();
         scanner.nextLine(); // очистка буфера
-        System.out.print("Введите новый статус заказа: ");
+        System.out.print("Enter a new order status: ");
         String newStatus = scanner.nextLine();
 
         DataManager.updateOrderStatus(orderId, newStatus);
     }
     public void addOrderClient() {
-        System.out.println("====== Форма создания заказа ======");
-        System.out.print("Введите ID клиента: ");
+        System.out.println("====== Order creation form ======");
+        System.out.print("Enter the customer ID: ");
         int nameId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите имя клиента: ");
+        System.out.print("Enter the client's name: ");
         String name = scanner.nextLine();
 
-        System.out.print("Введите параметры зрения: ");
+        System.out.print("Enter the vision parameters: ");
         String visionParam = scanner.nextLine();
 
-        System.out.print("Введите ID линз: ");
+        System.out.print("Enter the lens ID: ");
         int lensesId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите ID оправы: ");
+        System.out.print("Enter the frame ID: ");
         int frameId = scanner.nextInt();
-        scanner.nextLine(); // Очищаем буфер после nextInt()
+        scanner.nextLine();
 
-        System.out.print("Введите дату создания заказа (в формате yyyy-MM-dd): ");
+        System.out.print("Enter the date the order was created (in the format of yyyy-MM-dd): ");
         String createdAt = scanner.nextLine();
 
-        // Создание заказа с полученными данными
         DataManager.addOrderClient(nameId, name, visionParam, lensesId, frameId,createdAt);
     }
 }

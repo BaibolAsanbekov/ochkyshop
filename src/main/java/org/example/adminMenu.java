@@ -15,19 +15,19 @@ public class adminMenu {
 
 
         while (true) {
-            System.out.println("Меню администратора:");
-            System.out.println("1. Просмотр заказов");
-            System.out.println("2. Создать заказ");
-            System.out.println("3. Удалить заказ");
-            System.out.println("4. Изменить статус заказа");
-            System.out.println("5. Просмотр всех товаров");
-            System.out.println("6. Добавить новую оправу");
-            System.out.println("7. Добавить новую линзу");
-            System.out.println("8. Удалить товар");
-            System.out.println("9. Вернуться в главное меню");
+            System.out.println("Admin Menu:");
+            System.out.println("1. View orders");
+            System.out.println("2. Create an order");
+            System.out.println("3. Delete order");
+            System.out.println("4. Change order status");
+            System.out.println("5. View all products");
+            System.out.println("6. Add a new frame");
+            System.out.println("7. Add a new lens");
+            System.out.println("8. Remove product");
+            System.out.println("9. Back to main menu");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // очистка буфера
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -63,10 +63,10 @@ public class adminMenu {
                     deleteProduct();
                     break;
                 case 9:
-                    System.out.println("Возврат на главное меню");
+                    System.out.println("Return to the main menu");
                     return;
                 default:
-                    System.out.println("Пожалуйста, выберите правильный вариант.");
+                    System.out.println("Please select the correct option.");
             }
         }
 
@@ -74,22 +74,22 @@ public class adminMenu {
 
     private static void deleteProduct() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Меню удаления товара:");
-        System.out.println("1. Удалить оправу");
-        System.out.println("2. Удалить линзу");
-        System.out.println("3. Вернуться в меню администратора");
+        System.out.println("Product deletion menu:");
+        System.out.println("1. Remove the frame");
+        System.out.println("2. Remove the lens");
+        System.out.println("3. Back to the administrator menu");
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Очистка буфера
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
-                System.out.print("Введите ID оправы для удаления: ");
+                System.out.print("Enter the ID of the frame to delete: ");
                 int frameId = scanner.nextInt();
                 DataManager.deleteFrame(frameId);
                 break;
             case 2:
-                System.out.print("Введите ID линзы для удаления: ");
+                System.out.print("Enter the ID of the lens to remove: ");
                 int lensId = scanner.nextInt();
                 DataManager.deleteLens(lensId);
                 break;

@@ -11,25 +11,25 @@ public class Authentication {
     }
 
     public void registerUser() {
-        System.out.println("====== Регистрация ======");
-        System.out.print("Введите имя пользователя: ");
+        System.out.println("====== Registration ======");
+        System.out.print("Enter your user name: ");
         String username = scanner.nextLine();
-        System.out.print("Введите пароль: ");
+        System.out.print("Enter your password: ");
         String password = scanner.nextLine();
-        System.out.print("Повторите пароль: ");
+        System.out.print("Repeat the password: ");
         String confirmPassword = scanner.nextLine();
 
         if (!password.equals(confirmPassword)) {
-            System.out.println("Ошибка: Пароли не совпадают.");
+            System.out.println("Error: Passwords don't match.");
             return;
         }
 
         // Добавить логику для регистрации пользователя в базе данных
         boolean registrationSuccess = registerToDatabase(username, password);
         if (registrationSuccess) {
-            System.out.println("Пользователь успешно зарегистрирован.");
+            System.out.println("User successfully registered.");
         } else {
-            System.out.println("Ошибка при регистрации пользователя.");
+            System.out.println("Error during user registration.");
         }
     }
 
@@ -43,7 +43,7 @@ public class Authentication {
             checkStatement.setString(1, username);
             ResultSet resultSet = checkStatement.executeQuery();
             if (resultSet.next()) {
-                System.out.println("Ошибка: Пользователь с таким именем уже существует.");
+                System.out.println("Error: A user with this name already exists.");
                 return false;
             }
 
@@ -65,20 +65,20 @@ public class Authentication {
 
     public void authenticateUser() {
         while (true) {
-            System.out.println("====== Аутентификация ======");
-            System.out.print("Введите имя пользователя: ");
+            System.out.println("====== Authentication ======");
+            System.out.print("Enter your user name: ");
             String username = scanner.nextLine();
-            System.out.print("Введите пароль: ");
+            System.out.print("Enter your password: ");
             String password = scanner.nextLine();
 
             boolean authenticationSuccess = authInDatabase(username, password);
             if (authenticationSuccess) {
-                System.out.println("Аутентификация прошла успешно.");
+                System.out.println("Authentication was successful.");
                 // Вызов метода для отображения меню клиента
                 displayClientMenu();
                 break;
             } else {
-                System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
+                System.out.println("Error: Incorrect user name or password.");
             }
         }
     }
@@ -111,18 +111,18 @@ public class Authentication {
     }
 
     public void authenticateAdmin() {
-        System.out.println("====== Аутентификация Админа ======");
-        System.out.print("Введите имя пользователя: ");
+        System.out.println("====== Admin Authentication ======");
+        System.out.print("Enter a user name: ");
         String username = scanner.nextLine();
-        System.out.print("Введите пароль: ");
+        System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
         // Проверка аутентификации пользователя в базе данных
         boolean authenticationSuccess = authInDatabase(username, password);
         if (authenticationSuccess) {
-            System.out.println("Аутентификация прошла успешно.");
+            System.out.println("Authentication was successful.");
         } else {
-            System.out.println("Ошибка: Неправильное имя пользователя или пароль.");
+            System.out.println("Error: Incorrect user name or password.");
             
         }
     }

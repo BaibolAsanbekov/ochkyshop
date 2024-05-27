@@ -14,34 +14,34 @@ public class Main {
         Authentication authentication = new Authentication(scanner);
 
         while (true) {
-            System.out.println("Добро пожаловать в салон оптики!");
-            System.out.println("Выберите роль:");
-            System.out.println("1. Войти как Администратор");
-            System.out.println("2. Зарегистрироваться как Клиент");
-            System.out.println("3. Войти как Клиент");
-            System.out.println("4. Выйти");
-            System.out.print("Ваше действие: ");
+            System.out.println("Welcome to the optical salon!");
+            System.out.println("Choose a role:");
+            System.out.println("1. Log in as Administrator");
+            System.out.println("2. Register as a Client");
+            System.out.println("3. Sign in as a Customer");
+            System.out.println("4. Exit");
+            System.out.print("Your action: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // очистка буфера
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    authentication.authenticateAdmin(); // вход админа
+                    authentication.authenticateAdmin();
                     adminMenu.adminMenu();
                     break;
                 case 2:
-                    authentication.registerUser(); // регистер клиента
+                    authentication.registerUser();
                     authentication.authenticateUser();
                     break;
                 case 3:
-                    authentication.authenticateUser(); // вход клиента
+                    authentication.authenticateUser();
                     clientMenu.clientMenu();
                     break;
                 case 4:
-                    System.out.println("До свидания!");
+                    System.out.println("Goodbye!");
                     return;
                 default:
-                    System.out.println("Пожалуйста, выберите правильный вариант.");
+                    System.out.println("Please select the correct option.");
             }
         }
     }

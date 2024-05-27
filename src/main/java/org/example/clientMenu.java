@@ -11,11 +11,11 @@ public class clientMenu {
         order_form order = new order_form();
 
         while (true) {
-            System.out.println("Меню клиента:");
-            System.out.println("1. Сделать заказ");
-            System.out.println("2. Просмотреть свои заказы");
-            System.out.println("3. Посмотреть каталог товаров");
-            System.out.println("4. Вернуться в главное меню");
+            System.out.println("Client menu:");
+            System.out.println("1. Make an order");
+            System.out.println("2. View your orders");
+            System.out.println("3. View product catalog");
+            System.out.println("4. Back to main menu");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // очистка буфера
@@ -27,17 +27,17 @@ public class clientMenu {
                     break;
                 case 2:
                     // просмотр заказов
-                    DataManager.getClientOrders();
+//                    DataManager.getClientOrders();
                     break;
                 case 3:
                     // просмотр товаров
                     DataManager.viewAllProducts();
                     break;
                 case 4:
-                    System.out.println("Возврат на главное меню");
+                    System.out.println("Back to main menu");
                     return;
                 default:
-                    System.out.println("Пожалуйста, выберите правильный вариант.");
+                    System.out.println("Please select the correct option.");
             }
         }
     }
