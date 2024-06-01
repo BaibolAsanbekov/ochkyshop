@@ -16,7 +16,8 @@ public class DataManager {
         return DriverManager.getConnection(DATABASE_URL);
     }
 
-    public static void createOrder(int nameId, String name, String visionParam, int lensesId, int frameId, String status, String createdAt) {
+    public static void createOrder(int nameId, String name, String visionParam,
+                                   int lensesId, int frameId, String status, String createdAt) {
         String sql = "INSERT INTO orders (name_id, name, vision_param, lenses_id, frame_id, status, created_at) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = connect();
@@ -225,7 +226,8 @@ public class DataManager {
                 String status = rs.getString("status");
                 String createdAt = rs.getString("created_at");
 
-                System.out.printf("Order ID: %d, Name ID: %d, Name: %s, Vision parameters: %s, ID Lenses: %d, ID Frames: %d, Status: %s, Date of Creation: %s%n",
+                System.out.printf("Order ID: %d, Name ID: %d, Name: %s, Vision parameters: %s, " +
+                                "ID Lenses: %d, ID Frames: %d, Status: %s, Date of Creation: %s%n",
                         orderId, nameId, name, visionParam, lensesId, frameId, status, createdAt);
             }
 
@@ -235,7 +237,7 @@ public class DataManager {
         }
     }
     public boolean addOrder(int clientId, String productName, String visionParam, String Create) {
-        String sql = "INSERT INTO orders (client_id, product_name, vision_param, status, created_at) VALUES (?, ?, ?, 'Новый', ?)";
+        String sql = "INSERT INTO orders (client_id, product_name, vision_param, status, created_at) VALUES (?, ?, ?, 'New', ?)";
 
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -304,13 +306,12 @@ public class DataManager {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                int orderId = rs.getInt("id");
-                String productName = rs.getString("product_name");
+                String name = rs.getString("name");
                 String visionParam = rs.getString("vision_param");
                 String status = rs.getString("status");
                 String createdAt = rs.getString("created_at");
 
-                orders.add("order ID: " + orderId + ", Product name: " + productName + ", Vision parameter: " + visionParam
+                orders.add("order ID: " +  ", Product name: " + ", Vision parameter: " + visionParam
                         + ", Status: " + status + ", Created: " + createdAt);
             }
         } catch (SQLException e) {

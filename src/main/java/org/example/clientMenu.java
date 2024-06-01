@@ -3,6 +3,7 @@ package org.example;
 import DataManager.DataManager;
 import ordermanager.order_form;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class clientMenu {
@@ -18,7 +19,7 @@ public class clientMenu {
             System.out.println("4. Back to main menu");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // очистка буфера
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -27,7 +28,17 @@ public class clientMenu {
                     break;
                 case 2:
                     // просмотр заказов
-//                    DataManager.getClientOrders();
+                    System.out.println("Enter your client ID:");
+                    int clientId = scanner.nextInt();
+                    scanner.nextLine();
+                    List<String> orders = DataManager.getClientOrders(clientId);
+                    if (orders.isEmpty()) {
+                        System.out.println("No orders found for this client ID.");
+                    } else {
+                        for (String orderDetail : orders) {
+                            System.out.println(orderDetail);
+                        }
+                    }
                     break;
                 case 3:
                     // просмотр товаров

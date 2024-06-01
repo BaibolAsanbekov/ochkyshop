@@ -56,10 +56,10 @@ public class Authentication {
             // Закрытие соединения с базой данных
             connection.close();
 
-            return true; // Регистрация прошла успешно
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // Ошибка при регистрации
+            return false;
         }
     }
 
@@ -88,25 +88,25 @@ public class Authentication {
 
     private boolean authInDatabase(String username, String password) {
         try {
-            // Установка соединения с базой данных
+
             Connection connection = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
 
-            // Поиск пользователя с заданным именем и паролем
+
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ? AND password = ?");
             statement.setString(1, username);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
 
-            // Проверка наличия пользователя в базе данных
+
             boolean userExists = resultSet.next();
 
-            // Закрытие соединения с базой данных
+
             connection.close();
 
-            return userExists; // Возвращает true, если пользователь существует и аутентификация прошла успешно
+            return userExists;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false; // Ошибка при аутентификации
+            return false;
         }
     }
 
@@ -117,7 +117,7 @@ public class Authentication {
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
-        // Проверка аутентификации пользователя в базе данных
+
         boolean authenticationSuccess = authInDatabase(username, password);
         if (authenticationSuccess) {
             System.out.println("Authentication was successful.");
@@ -126,5 +126,4 @@ public class Authentication {
             
         }
     }
-
 }

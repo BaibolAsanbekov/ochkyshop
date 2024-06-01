@@ -51,11 +51,11 @@ public class adminMenu {
                     DataManager.viewAllProducts();
                     break;
                 case 6:
-                    //  Добавить новый товар
+                    //  Добавить новую оправу
                     product.createOrderFrame();
                     break;
                 case 7:
-                    //  Добавить новый товар
+                    //  Добавить новую линзу
                     product.createOrderLenses();
                     break;
                 case 8:
